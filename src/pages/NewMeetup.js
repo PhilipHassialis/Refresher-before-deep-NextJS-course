@@ -1,7 +1,13 @@
 import React from "react";
+import Newmeetupform from "../components/meetups/Newmeetupform";
 
 const NewMeetupPage = () => {
-    return <div>New Meetup Page</div>;
+    return (
+        <section>
+            <h1>Add new meetup</h1>
+            <Newmeetupform />
+        </section>
+    );
 };
 
 export default NewMeetupPage;
