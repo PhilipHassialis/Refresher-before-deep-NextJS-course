@@ -9,11 +9,20 @@ const FavouritesContext = createContext({
 });
 
 export const FavouritesContextProvider = (props) => {
-    const [userFavourites, setUserFavourites] = useState([]);
+    const savedMeetups = localStorage.getItem("refresh.course.favourites");
+
+    const [userFavourites, setUserFavourites] = useState(
+        savedMeetups ? JSON.parse(savedMeetups) : []
+    );
 
     const addFavouriteHandler = (favouriteMeetup) => {
         setUserFavourites((prevState) => {
-            return prevState.concat(favouriteMeetup);
+            const newMeetups = prevState.concat(favouriteMeetup);
+            localStorage.setItem(
+                "refresh.course.favourites",
+                JSON.stringify(newMeetups)
+            );
+            return newMeetups;
         });
     };
 
